@@ -1,1 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Case Management - Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex min-h-screen">
+    <aside class="w-64 bg-gray-800 text-white p-6 flex flex-col rounded-r-lg shadow-lg">
+        <div class="text-2xl font-bold mb-8 text-indigo-300">LegalFlow</div>
+        <nav class="flex-grow">
+            <ul>
+                <li class="mb-4">
+                    <a href="#dashboard" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 001 1h3m-6-11v4a1 1 0 01-1 1H9a1 1 0 01-1-1v-4m-7 10h14a1 1 0 001-1V7a1 1 0 00-1-1H4a1 1 0 00-1 1v12a1 1 0 001 1z"></path></svg>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#clients" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2m2-2a4 4 0 100-8m2 8a4 4 0 110-8m0 0H9m11v-1a1 1 0 00-1-1H9a1 1 0 00-1 1v1m4 0v10a1 1 0 01-1 1H9a1 1 0 01-1-1v-10m18-8a1 1 0 00-1-1H12a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V3z"></path></svg>
+                        Clients
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#cases" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 000-9m9 9H3m6 2l3-3m0 0l3 3m-3-3v8m-12 0h.025C11.163 21.745 12.01 22 13 22h.025"></path></svg>
+                        Cases
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#tasks" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        Tasks
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#documents" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Documents
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="mt-auto pt-6 border-t border-gray-700">
+            <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.942 3.33.83 2.864 2.334l-.153.207a1.724 1.724 0 00.587 2.22c1.407 1.088 1.407 3.33 0 4.418a1.724 1.724 0 00-.587 2.22l.153.207c.466 1.504-1.34 3.272-2.864 2.334a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.942-3.33-.83-2.864-2.334l.153-.207a1.724 1.724 0 00-.587-2.22c-1.407-1.088-1.407-3.33 0-4.418a1.724 1.724 0 00.587-2.22l-.153-.207c-.466-1.504 1.34-3.272 2.864-2.334a1.724 1.724 0 002.573-1.066z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Settings
+            </a>
+        </div>
+    </aside>
+
+    <main class="flex-1 p-8 overflow-y-auto">
+        <section id="dashboard" class="mb-10">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6">Dashboard</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-lg font-semibold text-gray-700 mb-2">Total Clients</h2>
+                    <p class="text-4xl font-bold text-indigo-600">45</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-lg font-semibold text-gray-700 mb-2">Active Cases</h2>
+                    <p class="text-4xl font-bold text-green-600">12</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-lg font-semibold text-gray-700 mb-2">Pending Tasks</h2>
+                    <p class="text-4xl font-bold text-yellow-600">8</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-lg font-semibold text-gray-700 mb-2">Upcoming Deadlines</h2>
+                    <p class="text-4xl font-bold text-red-600">3</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="clients" class="mb-10">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Clients</h1>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-200">
+                    Add New Client
+                </button>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">Name</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">John Doe</td>
+                            <td class="px-6 py-4 whitespace-nowrap">john.doe@example.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap">+234 801 234 5678</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">Edit</a>
+                                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">Jane Smith</td>
+                            <td class="px-6 py-4 whitespace-nowrap">jane.smith@example.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap">+234 702 345 6789</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">Edit</a>
+                                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="cases" class="mb-10">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Cases</h1>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-200">
+                    Add New Case
+                </button>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">Case Title</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Client</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">Property Dispute - Land at Lekki</td>
+                            <td class="px-6 py-4 whitespace-nowrap">John Doe</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                    Pending
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">View</a>
+                                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">Contract Review - ABC Ltd.</td>
+                            <td class="px-6 py-4 whitespace-nowrap">Jane Smith</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    Open
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">View</a>
+                                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="tasks" class="mb-10">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Tasks</h1>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-200">
+                    Add New Task
+                </button>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">Task Title</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Case</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Due Date</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">Draft initial pleading</td>
+                            <td class="px-6 py-4 whitespace-nowrap">Property Dispute - Land at Lekki</td>
+                            <td class="px-6 py-4 whitespace-nowrap">2025-06-10</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                    In Progress
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">Edit</a>
+                                <a href="#" class="text-green-600 hover:text-green-900 mr-4">Complete</a>
+                                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">Client meeting for contract details</td>
+                            <td class="px-6 py-4 whitespace-nowrap">Contract Review - ABC Ltd.</td>
+                            <td class="px-6 py-4 whitespace-nowrap">2025-06-05</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                    Pending
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">Edit</a>
+                                <a href="#" class="text-green-600 hover:text-green-900 mr-4">Complete</a>
+                                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="documents" class="mb-10">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Documents</h1>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-200">
+                    Upload New Document
+                </button>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">Title</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Case</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Uploaded On</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">Client Intake Form - John Doe</td>
+                            <td class="px-6 py-4 whitespace-nowrap">Property Dispute - Land at Lekki</td>
+                            <td class="px-6 py-4 whitespace-nowrap">Correspondence</td>
+                            <td class="px-6 py-4 whitespace-nowrap">2025-05-20</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">View/Download</a>
+                                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">Draft Contract V1.0</td>
+                            <td class="px-6 py-4 whitespace-nowrap">Contract Review - ABC Ltd.</td>
+                            <td class="px-6 py-4 whitespace-nowrap">Contract</td>
+                            <td class="px-6 py-4 whitespace-nowrap">2025-05-25</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">View/Download</a>
+                                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Simple client-side navigation for prototype
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+            });
+        });
+
+        // Initially show only the dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+            });
+            const dashboardSection = document.getElementById('dashboard');
+            if (dashboardSection) {
+                dashboardSection.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
 
